@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+
 use Closure;
 use Illuminate\Http\Request;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class PRoductAccessMiddleware
@@ -16,7 +18,9 @@ class PRoductAccessMiddleware
     public function handle(Request $request, Closure $next): Response
     {
     $validToken = env('API_TOKEN');
-        
+     if ($request->isMethod('get')){
+        return $next($request);
+     }   
      if ($request->input('token') !== $validToken) {
             return response()->json(['message' => 'Invalid token 401'], Response::HTTP_UNAUTHORIZED, );
         }
@@ -25,6 +29,7 @@ class PRoductAccessMiddleware
         }
         return $next($request);
     }
-
+    
 
 }
+

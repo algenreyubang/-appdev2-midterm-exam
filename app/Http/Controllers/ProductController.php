@@ -33,6 +33,7 @@ class ProductController extends Controller
     public function index()
     {
         return response()->json(['message' => 'Display all products']);
+        
 
     }
 
@@ -69,4 +70,6 @@ class ProductController extends Controller
     {
         return response()->json(['message' => 'Product with ID: ' . $id . ' deleted successfully']);
     }
+
+    
 }

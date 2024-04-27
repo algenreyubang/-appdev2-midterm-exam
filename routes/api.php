@@ -23,33 +23,34 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('products', ProductController::class);
 
 
+
 Route::post('/api/upload/local', [ProductController::class, 'uploadImageLocal']);
 Route::post('/api/upload/public', [ProductController::class, 'uploadImagePublic']);
 
-Route::post('/upload', function(Request $request){
-    $file = $request->file;
-    Storage::disk('local')->put('/', $file);
-});
-Route::get('/get', function () {
-	return response()->json(['message' => 'GET request handled.']);
-})->middleware(PRoductAccessMiddleware::class);
+// Route::post('/upload', function(Request $request){
+//     $file = $request->file;
+//     Storage::disk('local')->put('/', $file);
+// });
+// Route::get('/get', function () {
+// 	return response()->json(['message' => 'GET request handled.']);
+// })->middleware(PRoductAccessMiddleware::class);
 
 
-Route::post('/post', function () {
-	return response()->json(['message' => 'POST request handled.']);
-})->middleware(PRoductAccessMiddleware::class);
+// Route::post('/post', function () {
+// 	return response()->json(['message' => 'POST request handled.']);
+// })->middleware(PRoductAccessMiddleware::class);
 
 
-Route::put('/put', function () {
-	return response()->json(['message' => 'PUT request handled.']);
-})->middleware(PRoductAccessMiddleware::class);
+// Route::put('/put', function () {
+// 	return response()->json(['message' => 'PUT request handled.']);
+// })->middleware(PRoductAccessMiddleware::class);
 
 
-Route::patch('/patch', function () {
-	return response()->json(['message' => 'PATCH request handled.']);
-})->middleware(PRoductAccessMiddleware::class);
+// Route::patch('/patch', function () {
+// 	return response()->json(['message' => 'PATCH request handled.']);
+// })->middleware(PRoductAccessMiddleware::class);
 
 
-Route::delete('/delete', function () {
-	return response()->json(['message' => 'DELETE request handled.']);
-})->middleware(PRoductAccessMiddleware::class);
+// Route::delete('/delete', function () {
+// 	return response()->json(['message' => 'DELETE request handled.']);
+// })->middleware(PRoductAccessMiddleware::class);
